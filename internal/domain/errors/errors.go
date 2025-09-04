@@ -17,8 +17,8 @@ func (e *GoItError) Error() string {
 	return fmt.Sprintf("[%s] %s", e.Code, e.Message)
 }
 
-func New(code, message string, err error) *GoItError {
-	return &GoItError{
+func New(code, message string, err error) GoItError {
+	return GoItError{
 		Code:    code,
 		Message: message,
 		Err:     err,
@@ -27,8 +27,8 @@ func New(code, message string, err error) *GoItError {
 
 // Exemplos de erros comuns
 var (
-	ErrNotFound      = New("NOT_FOUND", "Recurso não encontrado", nil)
-	ErrUnauthorized  = New("UNAUTHORIZED", "Não autorizado", nil)
-	ErrInvalidInput  = New("INVALID_INPUT", "Entrada inválida", nil)
-	ErrInternal      = New("INTERNAL_ERROR", "Erro interno do servidor", nil)
+	ErrNotFound     = New("NOT_FOUND", "Recurso não encontrado", nil)
+	ErrUnauthorized = New("UNAUTHORIZED", "Não autorizado", nil)
+	ErrInvalidInput = New("INVALID_INPUT", "Entrada inválida", nil)
+	ErrInternal     = New("INTERNAL_ERROR", "Erro interno do servidor", nil)
 )

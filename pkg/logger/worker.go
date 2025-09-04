@@ -8,8 +8,10 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-var zapLogger *zap.Logger
-var wg sync.WaitGroup
+var (
+	zapLogger *zap.Logger
+	wg        sync.WaitGroup
+)
 
 // Create inicializa o logger e inicia o worker assíncrono
 func Create() {
@@ -18,7 +20,6 @@ func Create() {
 	cfg := zap.NewProductionConfig()
 
 	zapLogger, err = cfg.Build()
-
 	if err != nil {
 		panic(fmt.Errorf("erro ao criar zap logger: %w", err))
 	}
@@ -57,5 +58,5 @@ func Sync() {
 	}
 
 	close(logChan) // fecha o canal antes de esperar
-    wg.Wait()
+	wg.Wait()
 }
