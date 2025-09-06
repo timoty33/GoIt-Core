@@ -25,10 +25,3 @@ func New(code, message string, err error) GoItError {
 	}
 }
 
-// Exemplos de erros comuns
-var (
-	ErrNotFound     = New("NOT_FOUND", "Recurso não encontrado", nil)
-	ErrUnauthorized = New("UNAUTHORIZED", "Não autorizado", nil)
-	ErrInvalidInput = New("INVALID_INPUT", "Entrada inválida", nil)
-	ErrInternal     = New("INTERNAL_ERROR", "Erro interno do servidor", nil)
-)

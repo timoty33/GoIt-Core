@@ -41,8 +41,14 @@ func Create() {
 			case zapcore.WarnLevel:
 				zapLogger.Warn(entry.msg, entry.fields...)
 
-			case zapcore.ErrorLevel:
+			case zap.ErrorLevel:
 				zapLogger.Error(entry.msg, entry.fields...)
+
+			case zapcore.PanicLevel:
+				zapLogger.Panic(entry.msg, entry.fields...)
+
+			case zapcore.FatalLevel:
+				zapLogger.Fatal(entry.msg, entry.fields...)
 
 			default:
 				zapLogger.Info(entry.msg, entry.fields...)
