@@ -10,11 +10,13 @@ type UserRepository struct {
 	collection *m.Collection
 }
 
-var UserRepo UserRepository
+var UserRepo UserRepository // user repo global
 
-func init() {
-	UserRepo = UserRepository{
-		collection: mongo.DB.Collection("users"),
-	}
+// ==== create userRepo constructor ====
+func NewUserRepository(collection *m.Collection) UserRepository {
+	return UserRepository{collection: collection}
 }
 
+func init() {
+	UserRepo = NewUserRepository(mongo.DB.Collection("users"))
+}

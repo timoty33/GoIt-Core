@@ -14,10 +14,12 @@ type UserPortStruct struct {
 
 var UserPort UserPortStruct
 
+func NewUserPort(repo ur.UserRepository) UserPortStruct {
+	return UserPortStruct{repo: repo}
+}
+
 func init() {
-	UserPort = UserPortStruct{
-		repo: ur.UserRepo,
-	}
+	UserPort = NewUserPort(ur.UserRepo)
 }
 
 func (u *UserPortStruct) Create(ctx context.Context, user *entities.User) e.GoItError {
